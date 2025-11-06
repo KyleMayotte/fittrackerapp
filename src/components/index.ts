@@ -1,0 +1,21 @@
+// Export all components from a single entry point
+export * from './Button';
+export * from './Card';
+export * from './Input';
+export * from './ConfirmDialog';
+export { default as AddWorkoutModal } from './AddWorkoutModal';
+export { default as AddExerciseModal } from './AddExerciseModal';
+export { default as AddCardioModal } from './AddCardioModal';
+export { default as IncompleteSetModal } from './IncompleteSetModal';
+export { default as ErrorBoundary } from './ErrorBoundary';
+export { default as LifetimeStats } from './LifetimeStats';
+export { default as ProgressComparison } from './ProgressComparison';
+export { default as Sparkline } from './Sparkline';
+export { default as WeeklyStatsGrid } from './WeeklyStatsGrid';
+export { default as ExerciseProgressGraph } from './ExerciseProgressGraph';
+export { default as ExerciseSelector } from './ExerciseSelector';
+export { default as EnhancedStatCard } from './EnhancedStatCard';
+export { default as ExerciseDemoModal } from './ExerciseDemoModal';
+export { PRCelebration } from './PRCelebration';
+export { WorkoutCompletionModal } from './WorkoutCompletionModal';
+export { default as ManageCategoriesModal } from './ManageCategoriesModal';
