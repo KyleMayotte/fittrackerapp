@@ -1,191 +1,141 @@
-# MuscleUp - React Native Fitness Tracker
+# MuscleUp - AI-Powered Fitness Tracker
 
-AI-powered fitness tracking app with workout planning, nutrition logging, and progress monitoring.
+A React Native fitness app with workout tracking, nutrition logging, AI coaching, and social features.
 
-## 🎉 Migration Status: Complete!
+## ⚠️ Active Development
 
-**70% of your React web app has been successfully migrated to React Native!**
-
-All business logic, API services, hooks, and utilities are ready to use. The authentication flow and basic navigation are set up and working.
+This is a beta project built through rapid iteration. Expect bugs, missing tests, and potential breaking changes. You'll need your own Firebase project and API keys to run it.
 
 ## 📱 Features
 
-### ✅ Implemented
-- User authentication (login/register/logout)
-- Navigation with auth flow
-- All backend API services
-- Custom hooks for data management
-- Utility functions
-- Type definitions
-
-### 🔨 Ready to Build (Hooks Available)
-- **Workouts**
-  - Create, edit, delete workout templates
-  - Track workout sessions with timer
-  - Exercise search (API Ninjas integration)
-  - AI workout plan generation (GPT-4)
-
-- **Nutrition**
-  - Manual food logging
-  - USDA food database search
-  - Barcode scanning
-  - Meal photo analysis (GPT-4 Vision)
-  - Voice food logging (Whisper)
-  - Saved meal templates
-
-- **Goals & Progress**
-  - Set fitness goals
-  - AI goal recommendations
-  - Weight tracking
-  - Progress visualization
+- **Workout Tracking** - Create templates, log sets/reps, track PRs, rest timer
+- **Nutrition Logging** - Manual entry, USDA food search, macro tracking
+- **AI Coach (Atlas)** - OpenAI-powered workout advice and analysis
+- **Progress Tracking** - Charts, stats, personal records
+- **Social Features** - Friends, workout feed, share progress
+- **Exercise Database** - RapidAPI ExerciseDB integration with demos
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js >= 20
-- React Native development environment set up
-- iOS Simulator or Android Emulator
+- Node.js >= 18
+- React Native development environment
+- Android Studio (for Android) or Xcode (for iOS)
+- Firebase account
+- OpenAI API key (optional, for AI features)
+- RapidAPI key (optional, for exercise database)
 
 ### Installation
 
-1. **Install dependencies**
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/KyleMayotte/fittrackerapp.git
+   cd fittrackerapp
+   ```
+
+2. **Install dependencies**
    ```bash
    npm install
    ```
 
-2. **Configure environment**
+3. **Set up Firebase**
+   - Create a Firebase project at https://console.firebase.google.com
+   - Enable Authentication (Email/Password)
+   - Enable Firestore Database
+   - Download `google-services.json` (Android) to `android/app/`
+   - Download `GoogleService-Info.plist` (iOS) to `ios/`
+
+4. **Configure environment variables**
    ```bash
    cp .env.example .env
-   # Edit .env with your backend URL and API keys
    ```
 
-3. **Run the app**
-   ```bash
-   # iOS
-   npm run ios
+   Edit `.env` with your keys:
+   ```
+   OPENAI_API_KEY=sk-your-openai-key
+   RAPIDAPI_KEY=your-rapidapi-key
+   ```
 
+5. **Run the app**
+   ```bash
    # Android
    npm run android
+
+   # iOS
+   npm run ios
    ```
 
-### Backend Setup
+## 🔧 Tech Stack
 
-Your backend API from the web app (`C:\Users\mayot\my-app`) needs to be running.
-
-**Option 1: Local Development**
-```bash
-cd C:\Users\mayot\my-app
-npm run dev
-```
-
-**Option 2: Deploy to Production**
-Deploy your Next.js app and update `API_BASE_URL` in `.env`
+- **Frontend**: React Native 0.76
+- **Backend**: Firebase (Auth + Firestore)
+- **Navigation**: React Navigation
+- **State**: React Context + Hooks
+- **Language**: TypeScript
+- **AI**: OpenAI GPT-4
+- **APIs**: RapidAPI ExerciseDB, USDA Food Database
 
 ## 📁 Project Structure
 
 ```
 muscleup/
 ├── src/
-│   ├── navigation/          # React Navigation setup
-│   ├── screens/             # UI screens
-│   │   ├── auth/           # Login, Register
-│   │   └── home/           # Home/Dashboard
-│   ├── services/            # API communication
-│   │   ├── api.ts          # Base API client
-│   │   ├── auth.ts         # Authentication
-│   │   ├── workouts.ts     # Workout management
-│   │   ├── nutrition.ts    # Food tracking
-│   │   ├── goals.ts        # Fitness goals
-│   │   └── progress.ts     # Weight tracking
-│   ├── hooks/               # Custom React hooks
-│   │   ├── useAuth.ts
-│   │   ├── useWorkouts.ts
-│   │   ├── useNutrition.ts
-│   │   ├── useGoals.ts
-│   │   └── useProgress.ts
-│   ├── utils/               # Utility functions
-│   ├── types/               # TypeScript definitions
-│   ├── constants/           # App constants
-│   └── context/             # React Context providers
-├── App.tsx                  # App entry point
-└── package.json
+│   ├── components/      # Reusable UI components
+│   ├── screens/         # App screens
+│   ├── services/        # API & Firebase services
+│   ├── hooks/           # Custom React hooks
+│   ├── context/         # Auth & Theme context
+│   ├── utils/           # Helper functions
+│   ├── types/           # TypeScript types
+│   ├── theme/           # Colors, spacing, typography
+│   └── constants/       # App constants
+├── android/             # Android native code
+├── ios/                 # iOS native code
+└── .env.example         # Environment template
 ```
 
-## 🎯 Next Steps
+## 🔑 Required API Keys
 
-1. **Read the guides**
-   - [QUICK_START.md](QUICK_START.md) - Get the app running
-   - [MIGRATION_GUIDE.md](MIGRATION_GUIDE.md) - Detailed migration info
-   - [TRANSFERRED_FILES.md](TRANSFERRED_FILES.md) - File overview
+### Firebase (Required)
+1. Go to https://console.firebase.google.com
+2. Create a new project
+3. Enable Authentication > Email/Password
+4. Enable Firestore Database
+5. Download config files to your project
 
-2. **Build your screens**
-   - Use the provided hooks for data management
-   - All business logic is already implemented
-   - Focus on creating the UI layer
+### OpenAI (Optional - for AI coach)
+1. Get key at https://platform.openai.com/api-keys
+2. Add to `.env` as `OPENAI_API_KEY`
 
-3. **Add features**
-   - Start with workout tracking
-   - Add nutrition logging
-   - Implement AI features
-   - Build progress visualization
+### RapidAPI (Optional - for exercise database)
+1. Sign up at https://rapidapi.com
+2. Subscribe to ExerciseDB API
+3. Add to `.env` as `RAPIDAPI_KEY`
 
-## 📚 Documentation
+## 🤝 Contributing
 
-### Using the Hooks
+This is an open-source project built in public. Contributions welcome!
 
-```tsx
-import { useAuthContext } from './src/context/AuthContext';
-import { useWorkouts } from './src/hooks/useWorkouts';
+1. Fork the repo
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
-function MyScreen() {
-  const { user, token } = useAuthContext();
-  const { templates, fetchTemplates, createTemplate } =
-    useWorkouts(user?.email!, token!);
+**Note:** The codebase was built through rapid iteration. Some files are large and could use refactoring. PRs for code cleanup are especially welcome!
 
-  // Use the data and methods in your UI
-}
-```
+## 📝 Known Issues
 
-### Available Services
-
-All these services are ready to use:
-- `authService` - Login, register, logout
-- `workoutService` - Templates, sessions, AI generation
-- `nutritionService` - Food logging, search, barcode, voice, photos
-- `goalsService` - Goals and AI recommendations
-- `progressService` - Weight tracking
-
-## 🔧 Technology Stack
-
-- **Framework**: React Native 0.82
-- **Navigation**: React Navigation
-- **Storage**: AsyncStorage
-- **Language**: TypeScript
-- **Backend**: Next.js API routes (from web app)
-- **AI**: OpenAI GPT-4, Whisper, Vision
-- **External APIs**: USDA Food Database, API Ninjas
-
-## 🤝 Migration from Web
-
-This app is a React Native version of the web app at `C:\Users\mayot\my-app`.
-
-**What was transferred:**
-- ✅ All API communication logic
-- ✅ Business logic and data processing
-- ✅ Authentication system
-- ✅ Utility functions
-- ✅ Type definitions
-- ✅ Constants
-
-**What needs to be built:**
-- ⬜ UI screens (examples provided)
-- ⬜ Navigation structure (basic setup done)
-- ⬜ Platform-specific features (camera, audio)
+- WorkoutScreen.tsx is 3,800+ lines (needs refactoring)
+- No test coverage yet
+- Some features may be incomplete
+- Built primarily for Android (iOS may need tweaks)
 
 ## 📄 License
 
-Private project
+MIT
 
-## 🙏 Acknowledgments
+## 🙏 Credits
 
-Migrated from React web to React Native with all core business logic preserved.
+Built by [@KyleMayotte](https://github.com/KyleMayotte) with help from the dev community.
+
+Vibecoded with Claude Code.
